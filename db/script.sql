@@ -42,6 +42,7 @@ create table atenciones(
     idAbogados int(11) not null,
     idUsuarios int(11) not null,
     estado varchar(14) not null,
+    valor int(11) not null,
     PRIMARY KEY (id),
     FOREIGN KEY (idAbogados) REFERENCES abogados(id),
     FOREIGN KEY (idUsuarios) REFERENCES usuarios(id)
