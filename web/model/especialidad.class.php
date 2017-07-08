@@ -1,15 +1,17 @@
 <?php 
 	class Especialidad {
-        
+
         var $id;
-        var $rutNumero;
         var $nombre;
 
-        public static function crear($rutNumero, $nombre) {
-        
+        public static function crear($nombre) {
+            $conn = BD:conn();
+            $sql = "insert into especialidades(nombre) values(:nombre)";
+            $rs = $conn->prepare($sql);
+            return $rs->execute(array(':nombre' => $nombre));
         }
 
-        public static function actualizar($id, $rutNumero, $nombre) {
+        public static function actualizar($id, $nombre) {
         
         }
 
