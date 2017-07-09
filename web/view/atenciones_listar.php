@@ -17,7 +17,7 @@ if ($perfil == Usuario::$PERFIL_CLIENTE) {
 ?>
 <div class="row">
     <div class="col-lg-1"></div>
-    <div class="col-lg-11 FormTablaAtenciones">
+    <div class="col-lg-11 listadoDiv">
         <h1>Listado Atenciones</h1>
         <br>
         <table class="display" width="100%" cellspacing="0">
@@ -81,7 +81,7 @@ if ($perfil == Usuario::$PERFIL_CLIENTE) {
                     <option value="REALIZADA" <?php if($obj->estado == 'REALIZADA') { echo "selected"; } ?>>REALIZADA</option>
                 </select>
             </td>
-            <td><?php echo $obj->valor ?></td>
+            <td>$ <?php echo $obj->valor ?></td>
             <td>
 
             <form method="POST" action="../controller/atenciones.php?objeto=atenciones&accion=listar&operacion=eliminar"

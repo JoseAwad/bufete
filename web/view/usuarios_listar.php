@@ -9,7 +9,7 @@ $lista = Usuario::buscarTodosUsuarios($filtroRutNumero, $filtroNombreCompleto, $
 ?>
 <div class="row">
     <div class="col-lg-1"></div>
-    <div class="col-lg-11 FormTablaClientes">
+    <div class="col-lg-11 listadoDiv">
         <h1>Lista Usuarios</h1>
         <br>
         <table class="display" width="100%" cellspacing="0">
@@ -63,7 +63,7 @@ $lista = Usuario::buscarTodosUsuarios($filtroRutNumero, $filtroNombreCompleto, $
             <td><?php echo $obj->telefonoCelular ?></td>
             <td><?php echo $obj->telefonoFijo ?></td>
             <td><?php echo $obj->perfil ?></td>
-            <td><?php echo $obj->clave ?></td>
+            <td title="<?php echo $obj->clave ?>">******</td>
             <td>
             
             <form method="POST" action="../controller/usuarios.php?objeto=usuarios&accion=listar&operacion=eliminar"

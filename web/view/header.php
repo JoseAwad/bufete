@@ -23,14 +23,6 @@
         <link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.min.css"/>
         <script src="js/jquery.datetimepicker.full.min.js"></script>
 
-<style>
-body{
-    background:url(Vista/img/fondo.jpg) repeat scroll;
-    background-position: center center;
-    background-attachment: fixed;
-    background-size: cover;
-}
-</style>
 <script>
 
   function validarFormulario(listaCampos) {

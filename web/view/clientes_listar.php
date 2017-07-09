@@ -9,7 +9,7 @@ $lista = Usuario::buscarTodosPorPerfil($filtroRutNumero, $filtroNombreCompleto, 
 ?>
 <div class="row">
     <div class="col-lg-1"></div>
-    <div class="col-lg-11 FormTablaClientes">
+    <div class="col-lg-11 listadoDiv">
         <h1>Lista clientes</h1>
         <br>
         <table class="display" width="100%" cellspacing="0">
@@ -48,6 +48,7 @@ $lista = Usuario::buscarTodosPorPerfil($filtroRutNumero, $filtroNombreCompleto, 
                 <th>Telefono fijo</th>
                 <th>Perfil</th>
                 <th>clave</th>
+                <th>Acción</th>
             </thead>
             <tbody>
 <?php
@@ -63,7 +64,7 @@ $lista = Usuario::buscarTodosPorPerfil($filtroRutNumero, $filtroNombreCompleto, 
             <td><?php echo $obj->telefonoCelular ?></td>
             <td><?php echo $obj->telefonoFijo ?></td>
             <td><?php echo $obj->perfil ?></td>
-            <td><?php echo $obj->clave ?></td>
+            <td title="<?php echo $obj->clave ?>">******</td>
             <td>
         <?php
             if($_SESSION['perfil']=="ADMINISTRADOR") {

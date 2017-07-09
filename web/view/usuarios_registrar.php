@@ -62,17 +62,17 @@
 
   <div class="row">
         <div class="col-lg-1"></div>
-        <div class="col-lg-10 formAddUsuario">
+        <div class="col-lg-10 formAddUsuario formData">
               <h1>Nuevo usuario</h1>
               <div class="casillaFormulario">
                 <input type="text" id="formAddUsuario_rutNumero" name="rutNumero" placeholder="Ingrese rut" maxlength="10">
-                <input type="text" id="formAddUsuario_dvNumero" name="dvNumero" placeholder="Ingrese dígito verificador" maxlength="1">
+                <input type="text" id="formAddUsuario_dvNumero" name="dvNumero" class="digitoVerficador" placeholder="Dv" maxlength="1">
               </div>
               <div class="casillaFormulario">
                 <input type="text" id="formAddUsuario_nombreCompleto" name="nombreCompleto" placeholder="Ingrese nombre" maxlength="100">
               </div>
               <div class="casillaFormulario">
-                <input type="date" id="formAddUsuario_fechaIncorporacion" name="fechaIncorporacion" placeholder="Ingrese fecha incorporacion" maxlength="20">
+                <input type="text" id="formAddUsuario_fechaIncorporacion" name="fechaIncorporacion" placeholder="Ingrese fecha incorporacion" maxlength="20">
               </div>  
               <div class="casillaFormulario">
                 <input type="text" id="formAddUsuario_direccion" name="direccion" placeholder="Ingrese dirección" maxlength="100">
@@ -84,7 +84,7 @@
                 <input type="text" id="formAddUsuario_telefonoFijo" name="telefonoFijo" placeholder="Ingrese telefono Fijo" maxlength="12">
               </div>
               <div>
-                  <select id="formAddUsuario_perfil" name="perfil" class="selectpicker" data-style="btn">
+                  <select id="formAddUsuario_perfil" name="perfil" class="selectPicker">
                       <option value="">Seleccione perfil</option>
                       <option value="GERENTE">Gerente</option>
                       <option value="ADMINISTRADOR">Administrador</option>
@@ -95,7 +95,7 @@
                 <input type="text" id="formAddUsuario_clave" name="clave" placeholder="Ingrese clave" maxlength="6">
               </div>
               <div>                
-                  <button type="submit" class="addUsuario_btn">Agregar</button>
+                  <button type="submit" class="btn">Agregar</button>
               </div>
         </div>  
         <div class="col-lg-1"></div>
@@ -103,3 +103,9 @@
   </form>
 
 </div>
+
+<script>
+  $('#formAddUsuario_fechaIncorporacion').datepicker({
+    dateFormat: 'yy-mm-dd'
+  });
+</script>

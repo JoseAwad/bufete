@@ -42,13 +42,13 @@
 
   <div class="row">
         <div class="col-lg-1"></div>
-        <div class="col-lg-10 formAddAtencion">
+        <div class="col-lg-10 formAddAtencion formData">
               <h1>Nueva Atencion</h1>
               <div class="casillaFormulario">
                 <input type="text" id="formAddAtencion_fechaHora" name="fechaHora" >
               </div>
               <div class="casillaFormulario">
-                <select id="formAddAtencion_idAbogado" name="idAbogados" class="selectpicker" data-style="btn">
+                <select id="formAddAtencion_idAbogado" name="idAbogados" class="selectPicker">
                 <?php
                 $data = Abogado::buscarTodos("","",1);
                 echo '<option value="-1" selected="true" disabled>'."Seleccione abogado".'</option>';
@@ -58,7 +58,7 @@
                 </select>
               </div>
               <div class="casillaFormulario">
-                <select id="formAddAtencion_idUsuario" name="idUsuarios" class="selectpicker" data-style="btn">
+                <select id="formAddAtencion_idUsuario" name="idUsuarios" class="selectPicker">
                 <?php
                 $data = Usuario::buscarTodosPorPerfil("","",Usuario::$PERFIL_CLIENTE);
                 echo '<option value="-1" selected="true" disabled>'."Seleccione cliente".'</option>';
@@ -71,7 +71,7 @@
                 <input type="number" readOnly id="formAddAtencion_valor" name="valor">
               </div>
               <div>                
-                  <button type="submit" class="addUsuario_btn">Agregar</button>
+                  <button type="submit" class="btn">Agregar</button>
               </div>
         </div>  
         <div class="col-lg-1"></div>

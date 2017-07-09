@@ -1,5 +1,3 @@
-<div class="container" style="width: 100%;">
-
 <script>
   function validarFormulario_formAddAbogado() {
     var listaCampos = [
@@ -52,24 +50,27 @@
   }
 ?>
 
+<div class="container" style="width: 100%;">
+
   <form method="POST" action="../controller/abogados.php?objeto=abogados&accion=registrar&operacion=registrar"
         onsubmit="return validarFormulario_formAddAbogado();">
+  
   <div class="row">
         <div class="col-lg-1"></div>
-        <div class="col-lg-10 formAddAbogado">
+        <div class="col-lg-10 formAddAbogado formData">
               <h1>Nuevo abogado</h1>
               <div class="casillaFormulario">
                 <input type="text" id="formAddAbogado_rutNumero" name="rutNumero" placeholder="Ingrese rut" maxlength="10">-
-                <input type="text" id="formAddAbogado_dvNumero" name="dvNumero" placeholder="Ingrese dígito verificador" maxlength="1">
+                <input type="text" id="formAddAbogado_dvNumero" name="dvNumero" class="digitoVerficador" placeholder="Dv" maxlength="1">
               </div>
               <div class="casillaFormulario">
                 <input type="text" id="formAddAbogado_nombreCompleto" name="nombreCompleto" placeholder="Ingrese nombre" maxlength="100">
               </div>
               <div class="casillaFormulario">
-                <input type="date" id="formAddAbogado_fechaContratacion" name="fechaContratacion" placeholder="Ingrese fecha contratacion"  maxlength="20">
+                <input type="text" id="formAddAbogado_fechaContratacion" name="fechaContratacion" placeholder="fecha contratacion"  maxlength="20">
               </div>  
               <div class="casillaFormulario">
-                <select id="formAddAbogado_idEspecialidad" name="idEspecialidad" class="selectpicker" data-style="btn">
+                <select id="formAddAbogado_idEspecialidad" name="idEspecialidad" class="selectPicker">
                 <?php
                 $data = Especialidad::buscarTodos();
                 echo '<option value="-1" selected="true" disabled>'."Seleccione especialidad".'</option>';
@@ -90,3 +91,9 @@
   </form>
 
 </div>
+
+<script>
+  $('#formAddAbogado_fechaContratacion').datepicker({
+    dateFormat: 'yy-mm-dd'
+  });
+</script>

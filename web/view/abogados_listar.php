@@ -9,7 +9,7 @@ $lista = Abogado::buscarTodos($filtroRutNumero, $filtroNombreCompleto, $filtroEs
 ?>
 <div class="row">
     <div class="col-lg-1"></div>
-    <div class="col-lg-11 Formulario_TablaAbogados">
+    <div class="col-lg-11 listadoDiv">
         <h1>Lista Abogados</h1>
         <br>
         <table id="tablaAbogados" class="display" width="100%" cellspacing="0">

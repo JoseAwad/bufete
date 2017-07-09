@@ -62,20 +62,20 @@
 
   <div class="row">
         <div class="col-lg-1"></div>
-        <div class="col-lg-10 formAddCliente">
+        <div class="col-lg-10 formAddCliente formData">
               <h1>Nuevo cliente</h1>
               <div class="casillaFormulario">
                 <input type="text" id="formAddCliente_rutNumero" name="rutNumero" placeholder="Ingrese rut" maxlength="10">
-                <input type="text" id="formAddCliente_dvNumero" name="dvNumero" placeholder="Ingrese dígito verificador" maxlength="1">
+                <input type="text" id="formAddCliente_dvNumero" name="dvNumero" class="digitoVerficador" placeholder="Dv" maxlength="1">
               </div>
               <div class="casillaFormulario">
                 <input type="text" id="formAddCliente_nombreCompleto" name="nombreCompleto" placeholder="Ingrese nombre" maxlength="100">
               </div>
               <div class="casillaFormulario">
-                <input type="date" id="formAddCliente_fechaIncorporacion" name="fechaIncorporacion" placeholder="Ingrese fecha incorporacion" maxlength="20">
+                <input type="text" id="formAddCliente_fechaIncorporacion" name="fechaIncorporacion" placeholder="Ingrese fecha incorporacion" maxlength="20">
               </div>
               <div>
-                  <select id="formAddCliente_tipoUsuario" name="tipoUsuario" class="selectpicker" data-style="btn">
+                  <select id="formAddCliente_tipoUsuario" name="tipoUsuario" class="selectPicker">
                       <option value="">Seleccione tipo Cliente</option>
                       <option value="N">NATURAL</option>
                       <option value="J">JURIDICO</option>
@@ -94,7 +94,7 @@
                 <input type="text" id="formAddCliente_clave" name="clave" placeholder="Ingrese clave" maxlength="6">
               </div>
               <div>                
-                  <button type="submit" class="addUsuario_btn">Agregar</button>
+                  <button type="submit" class="btn">Agregar</button>
               </div>
         </div>  
         <div class="col-lg-1"></div>
@@ -102,3 +102,9 @@
   </form>
 
 </div>
+
+<script>
+  $('#formAddCliente_fechaIncorporacion').datepicker({
+    dateFormat: 'yy-mm-dd'
+  });
+</script>
