@@ -8,7 +8,7 @@ function headerWrapper($path) {
     }
     $uri .= $_SERVER['HTTP_HOST'];
     if ($_SERVER['HTTP_HOST'] == 'localhost') {
-        $uri .= '/proyecto4/web';
+        $uri .= '/bufete/web';
     }
     return header('Location: '.$uri.$path);
 }
