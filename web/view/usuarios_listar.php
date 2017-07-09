@@ -61,7 +61,7 @@ $lista = Usuario::buscarTodosUsuarios($filtroRutNumero, $filtroNombreCompleto, $
             <td><?php echo $obj->perfil ?></td>
             <td><?php echo $obj->clave ?></td>
             <td>
-
+            
             <form method="POST" action="../controller/usuarios.php?objeto=usuarios&accion=listar&operacion=eliminar"
                   onsubmit="return confirm('Esta seguro que desea eliminar al usuario.');">
                 <input type="hidden" name="id" value="<?php echo $obj->id ?>" />

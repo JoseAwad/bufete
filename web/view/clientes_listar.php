@@ -61,13 +61,16 @@ $lista = Usuario::buscarTodosPorPerfil($filtroRutNumero, $filtroNombreCompleto, 
             <td><?php echo $obj->perfil ?></td>
             <td><?php echo $obj->clave ?></td>
             <td>
-
+        <?php
+            if($_SESSION['perfil']=="ADMINISTRADOR") {
+        ?>
             <form method="POST" action="../controller/clientes.php?objeto=clientes&accion=listar&operacion=eliminar"
                   onsubmit="return confirm('Esta seguro que desea eliminar al cliente.');">
                 <input type="hidden" name="id" value="<?php echo $obj->id ?>" />
                 <button type="submit"><img src='img/eliminar.png' width='24' height='24' />Eliminar</button>
             </form>
 <?php            
+            }
         }
 ?>
             </td>

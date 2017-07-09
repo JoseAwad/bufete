@@ -74,12 +74,18 @@ $lista = Abogado::buscarTodos($filtroRutNumero, $filtroNombreCompleto, $filtroEs
 <?php
         } else {
 ?>
+<?php
+            if($_SESSION['perfil']=="ADMINISTRADOR") {
+        ?>
             <form method="POST" action="../controller/abogados.php?objeto=abogados&accion=listar&operacion=despedir"
                   onsubmit="return confirm('Esta seguro que desea despedir al abogado.');">
                 <input type="hidden" name="id" value="<?php echo $obj->id ?>" />
                 <button type="submit"><img src='img/eliminar.png' width='24' height='24' />Despedir</button>
             </form>
 <?php            
+            } else{
+                echo "Activo";
+            }
         }
 ?>
             </td>
