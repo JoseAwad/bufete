@@ -28,4 +28,34 @@ body{
     background-size: cover;
 }
 </style>
+<script>
+
+  function validarFormulario(listaCampos) {
+    var error = '';
+    for(var i = 0; i < listaCampos.length; i++) {
+      var campo = listaCampos[i];
+      var id = campo.id;
+      var tipo = campo.tipo;
+      var mensaje = campo.mensaje;
+      var valor = $('#' + id).val();
+      if (tipo == 'number') {
+        if (isNaN(valor) || Number(valor) <= 0) {
+          error = mensaje;
+          break;
+        }
+      } else if (tipo == 'text') {
+        if (valor == '' || valor.length == 0) {
+          error = mensaje;
+          break;
+        }
+      }
+    }
+    if (error == '') {
+      return true;
+    } else {
+      alert(error);
+      return false;
+    }
+  }
+</script>  
 <body>
