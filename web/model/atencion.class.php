@@ -119,5 +119,35 @@ class Atencion {
         $rs = $conn->prepare($sql);
         return $rs->execute(array(':id' => $id,':estado'=>$estado));
     }
+
+public static function buscarTodosAtenciones($estado) {
+        $conn = BD::conn();
+        $sql = "select * from atenciones";
+        if (!empty($estado)) {
+            $sqlWhere = array();
+            if (!empty($estado)) {
+                array_push($sqlWhere, " estado like  '%".$estado."%'");
+            }
+            $sql = $sql." where ".implode(" and ", $sqlWhere);
+        }
+        $rs = $conn->query($sql);
+        if ($rs) {
+            $rows = $rs->fetchAll(PDO::FETCH_ASSOC);
+            $arr = array();
+            foreach ($rows as &$row) {
+                $obj = new Atencion();
+                $obj->id = $row["id"];
+                $obj->fechaHora = $row["fechaHora"];
+                $obj->idAbogados = $row["idAbogados"];
+                $obj->idUsuarios = $row["idUsuarios"];
+                $obj->estado = $row["estado"];
+                $obj->valor = $row["valor"];
+                array_push($arr, $obj);
+            }
+            return $arr;
+        } else {
+            return array();
+        }
+    }
 }
 ?>
