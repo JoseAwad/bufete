@@ -3,6 +3,14 @@
 require('../model/usuario.class.php');
 require('../model/especialidad.class.php');
 
+$data = Especialidad::buscarTodos();
+                print_r($data);
+
+echo '<option value="" selected="true" disabled>'."Seleccione proyecto".'</option>';
+                foreach ($data as $value) {
+                    echo '<option value="'.$value->id.'">'.$value->nombre.'</option>';
+                }
+
 /*
 $esp2 = Especialidad::buscarPorId(3);
 
@@ -42,8 +50,8 @@ $conn = BD::conn();
                                     ":perfil" => $perfil,
                                     ":clave" => $clave_encriptada));
 echo $exito;*/
+/*
 $u= Usuario::crear(18279316, "Jose", "2017/09/09", "natural", "ddd", "", "", "administrador", "pepito");
 echo $u->clave;
-
-
 print_r( Usuario::validarClave(182793167,"pepito"));
+*/

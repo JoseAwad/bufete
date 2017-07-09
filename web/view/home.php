@@ -17,11 +17,11 @@ $usuario = Usuario::fromJson($_SESSION['model_usuario']);
 //print_r($usuario->perfil);
 
 if ($usuario->perfil == Usuario::$PERFIL_GERENTE) {
-    headerWrapper('/view/menu_gerente.php');
+    headerWrapper('/view/gerente_home.php');
 } else if ($usuario->perfil == Usuario::$PERFIL_ADMINISTRADOR) {
-    headerWrapper('/view/menu_administrador.php');
+    headerWrapper('/view/administrador_home.php');
 } else if ($usuario->perfil == Usuario::$PERFIL_SECRETARIA) {
-    headerWrapper('/view/menu_secretaria.php');
+    headerWrapper('/view/secretaria_home.php');
 } else if ($usuario->perfil == Usuario::$PERFIL_CLIENTE) {
-    headerWrapper('/view/menu_cliente.php');
+    headerWrapper('/view/cliente_home.php');
 }
