@@ -41,6 +41,7 @@ body{
       var tipo = campo.tipo;
       var mensaje = campo.mensaje;
       var valor = $('#' + id).val();
+      console.log(id, tipo, valor);
       if (tipo == 'number') {
         if (isNaN(valor) || Number(valor) <= 0) {
           error = mensaje;
@@ -84,6 +85,6 @@ body{
 		if ( digv == 'K' ) digv = 'k' ;
 		return (calcularRutDv(rut) == digv );
 	}
-}
+
 </script>  
 <body>

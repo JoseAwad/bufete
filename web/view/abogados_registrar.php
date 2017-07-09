@@ -24,7 +24,7 @@
         mensaje: 'Seleccione especialidad'
       },
       {
-        id: 'formAddAbogado__valorHora',
+        id: 'formAddAbogado_valorHora',
         tipo: 'number',
         mensaje: 'Seleccione valor hora'
       }
@@ -36,6 +36,7 @@
 <?php
   if(!empty($_SESSION['error_abogados'])) {
     echo "<script>alert('".$_SESSION['error_abogados']."');</script>";
+    $_SESSION['error_abogados'] = '';
   }
 ?>
 
@@ -46,7 +47,8 @@
         <div class="col-lg-10 formAddAbogado">
               <h1>Nuevo abogado</h1>
               <div class="casillaFormulario">
-                <input type="text" id="formAddAbogado_rutNumero" name="rutNumero" placeholder="Ingrese rut">
+                <input type="text" id="formAddAbogado_rutNumero" name="rutNumero" placeholder="Ingrese rut" maxlength="10">-
+                <input type="text" id="formAddAbogado_dvNumero" name="dvNumero" placeholder="Ingrese digito verificador" maxlength="1">
               </div>
               <div class="casillaFormulario">
                 <input type="text" id="formAddAbogado_nombreCompleto" name="nombreCompleto" placeholder="Ingrese nombre">
@@ -65,7 +67,7 @@
                 </select>
               </div>
               <div class="casillaFormulario">
-                <input type="number" id="formAddAbogado__valorHora" name="valorHora" placeholder="Ingrese valor hora">
+                <input type="text" id="formAddAbogado_valorHora" name="valorHora" placeholder="Ingrese valor hora">
               </div>  
               <div>
                   <button type="submit" class="btn">Agregar</button>
