@@ -1,6 +1,11 @@
 <?php
 include('header.php');
 require('../utils/utils.php');
+require('../utils/bd.class.php');
+require('../model/abogado.class.php');
+require('../model/abogadoEspecialidad.class.php');
+require('../model/atencion.class.php');
+require('../model/especialidad.class.php');
 require('../model/usuario.class.php');
 
 session_start();
@@ -9,8 +14,16 @@ $usuario = Usuario::fromJson($_SESSION['model_usuario']);
 
 if ($usuario->perfil == Usuario::$PERFIL_CLIENTE) {
     
+    $objeto = getParam("objeto", postParam("objeto", ""));
+    $accion = getParam("accion", postParam("accion", ""));
+
     include('cliente_menu.php');
-    include('cliente_body.php');
+
+    //incluye la pagina de acuerdo al tipo de objeto y accion
+    if (!empty($objeto) && !empty($accion)) {
+        include($objeto.'_'.$accion.'.php');
+    }
+    
     include('footer.php');
 
 } else {

@@ -4,15 +4,19 @@ require('../utils/bd.class.php');
 require('../model/abogado.class.php');
 require('../model/abogadoEspecialidad.class.php');
 
-if (!empty($_GET['objeto']) && !empty($_GET['accion']) && !empty($_GET['operacion'])) {
-    
-    if ($_GET['operacion'] == 'registrar') {
+$objeto = getParam("objeto", "");
+$accion = getParam("accion", "");
+$operacion = getParam("operacion", "");
 
-        $rutNumero = $_POST['rutNumero'];
-        $nombreCompleto = $_POST['nombreCompleto'];
-        $fechaContratacion = $_POST['fechaContratacion'];
-        $valorHora = $_POST['valorHora'];
-        $idEspecialidad = $_POST['idEspecialidad'];
+if (!empty($objeto) && !empty($accion) && !empty($operacion)) {
+    
+    if ($operacion == 'registrar') {
+
+        $rutNumero = postParam('rutNumero',0);
+        $nombreCompleto = postParam('nombreCompleto','');
+        $fechaContratacion = postParam('fechaContratacion','');
+        $valorHora = postParam('valorHora',0);
+        $idEspecialidad = postParam('idEspecialidad',0);
 
         $abogado = Abogado::crear($rutNumero, $nombreCompleto, $fechaContratacion, $valorHora);
 
@@ -20,10 +24,13 @@ if (!empty($_GET['objeto']) && !empty($_GET['accion']) && !empty($_GET['operacio
             $abogadoEspecialidad = AbogadoEspecialidad::crear($abogado->id, $idEspecialidad);
         }
 
-    } else if ($_GET['operacion'] == 'eliminar') {   
+    } else if ($operacion == 'despedir') {    
 
+        $id = postParam('id', 0);
+        Abogado::despedir($id);
     }
-    headerWrapper('/view/administrador_home.php?objeto='.$_GET['objeto'].'&accion='.$_GET['accion']);
+
+    headerWrapper('/view/administrador_home.php?objeto='.$objeto.'&accion='.$accion);
 }
 
 ?>

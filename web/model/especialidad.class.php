@@ -1,7 +1,4 @@
-<?php 
-
-require("../utils/bd.class.php");
-
+<?php
 class Especialidad {
 
     var $id;
@@ -15,7 +12,7 @@ class Especialidad {
         }
         return $u;
     }
-
+    /*
     public static function crear($nombre) {
         $conn = BD::conn();
         $sql = "insert into especialidades(nombre) values(:nombre)";
@@ -38,7 +35,7 @@ class Especialidad {
         $sql = "update especialidades set nombre = :nombre where id = :id";
         $rs = $conn->prepare($sql);
         return $rs->execute(array(':nombre' => $nombre, ":id" => $id));
-    }
+    }*/
 
     public static function buscarPorId($id) {
         $conn = BD::conn();
@@ -73,7 +70,7 @@ class Especialidad {
             return null;
         }
     }
-
+    /*
     public static function borrar($id) {
         $conn = BD::conn();
         $sql = "delete from especialidades where id = :id";
@@ -83,6 +80,6 @@ class Especialidad {
         } else {
             return false;
         }
-    }
+    }*/
 }
 ?>

@@ -53,7 +53,6 @@ if (!empty($_GET['objeto']) && $_GET['objeto'] == 'abogados') {
                     <ul class="nav navbar-nav">
                         <li><a href="administrador_home.php?objeto=abogados&accion=listar">Listar</a></li>
                         <li><a href="administrador_home.php?objeto=abogados&accion=registrar">Contratar</a></li>
-                        <li><a href="administrador_home.php?objeto=abogados&accion=eliminar">Despedir</a></li>
                     </ul>
                 </div>
             </nav>

@@ -34,9 +34,9 @@ class AbogadoEspecialidad {
 
     }
 
-    public static function buscarPorId($id) {
+    public static function buscarPorIdAbogados($idAbogados) {
         $conn = BD::conn();
-        $sql = "select * from abogadosEspecialidades where id = ".$id;
+        $sql = "select * from abogadosEspecialidades where idAbogados = ".$idAbogados;
         $rs = $conn->query($sql);
         if ($rs) {
             $row = $rs->fetch(PDO::FETCH_ASSOC);
@@ -50,11 +50,11 @@ class AbogadoEspecialidad {
         }
     }
 
-    public static function borrar($id) {
+    public static function borrarPorIdAbogados($idAbogados) {
         $conn = BD::conn();
-        $sql = "delete from abogadosEspecialidades where id = :id";
+        $sql = "delete from abogadosEspecialidades where idAbogados = :idAbogados";
         $rs = $conn->prepare($sql);
-        if ($rs->execute(array(":id" => $id))) {
+        if ($rs->execute(array(":idAbogados" => $idAbogados))) {
             return true;
         } else {
             return false;

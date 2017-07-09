@@ -1,52 +1,94 @@
 <div class="container" style="width: 100%;">
+<?php
 
-<script>
-     $(document).ready(function(){
-        $('#tablaAbogados').DataTable({
-        "language": {
-            "url": "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-        }
-        });
-    });
-</script>
-    <div class="row">
-        <div class="col-lg-1"></div>
-        <div class="col-lg-10 Formulario_TablaAbogados">
-             <h1>Lista Abogados</h1>
-             <br>
-            <table id="tablaAbogados" class="display" width="100%" cellspacing="0">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Rut</th>
+$filtroRutNumero = getParam('rutNumero', '');
+$filtroNombreCompleto = getParam('nombreCompleto','');
+$filtroEstado = getParam('estado', '');
+
+$lista = Abogado::buscarTodos($filtroRutNumero, $filtroNombreCompleto, $filtroEstado);
+?>
+<div class="row">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-11 Formulario_TablaAbogados">
+        <h1>Lista Abogados</h1>
+        <br>
+        <table id="tablaAbogados" class="display" width="100%" cellspacing="0">
+            <thead>
+                <form method="GET" action="../view/administrador_home.php">
+                    <input type="hidden" name="objeto" value="abogados">
+                    <input type="hidden" name="accion" value="listar">
+                    <th>Rut número: 
+                        <input type="text" name="rutNumero" value="<?php echo $filtroRutNumero; ?>">
+                    </th>
+                    <th>Nombre Completo:
+                        <input type="text" name="nombreCompleto" value="<?php echo $filtroNombreCompleto; ?>">
+                    </th>
+                    <th>Estado: 
+                        <select name="estado">
+                            <option value='0' <?php if ($filtroEstado == 0){ echo 'selected'; } ?> >Todos</option>
+                            <option value='1' <?php if ($filtroEstado == 1){ echo 'selected'; } ?>>Activos</option>
+                            <option value='2' <?php if ($filtroEstado == 2){ echo 'selected'; } ?>>Despedidos</option>
+                        </seect>
+                    </th>
+                    <th>
+                        <button type="submit">Buscar</button>
+                    </th>
+                </form>
+            </thead>
+            <tbody>
+            </tbody>
+        <table>
+        <br>
+        <table id="tablaAbogados" class="display" width="100%" cellspacing="0">
+            <thead>
+                <th>Id</th>
+                <th>Rut Número</th>
                 <th>Nombre Completo</th>
-                <th>Fecha contratación</th>
-                <th>valor Hora</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-                require('../utils/bd.class.php');
-                require('../model/abogado.class.php');
-
-                $lista = Abogado::buscarTodos();
-
-                foreach ($lista as $obj) {
-                echo "<tr>";
-                echo "<td>".$obj->id."</td>";
-                echo "<td>".$obj->rutNumero."</td>";
-                echo "<td>".$obj->nombreCompleto."</td>";
-                echo "<td>".$obj->fechaContratacion."</td>";
-                echo "<td>".$obj->valorHora."</td>";
-                echo "<td class=''><a class='deleteAbogado_btn' href='../controller/abogados.php?accion=eliminar&id=".$obj->id."' ><img src='img/eliminar.png' width='24' height='24' /></a> </td>";
-                echo "</tr>";
-            }
-            ?>
-        </tbody>
-            </table>
-        </div>  
-        <div class="col-lg-1"></div>
+                <th>Fecha Contratación</th>
+                <th>Valor Hora</th>
+                <th>Especialidad</th>
+                <th>Estado</th>
+            </thead>
+            <tbody>
+<?php
+        foreach ($lista as $obj) {
+?>
+        <tr>
+            <td><?php echo $obj->id ?></td>
+            <td><?php echo $obj->rutNumero ?></td>
+            <td><?php echo $obj->nombreCompleto ?></td>
+            <td><?php echo $obj->fechaContratacion ?></td>
+            <td><?php echo $obj->valorHora ?></td>
+            <td>
+<?php
+            $abogadoEspecialidad = AbogadoEspecialidad::buscarPorIdAbogados($obj->id);
+            $especialidad = Especialidad::buscarPorId($abogadoEspecialidad->idEspecialidades);
+            echo $especialidad->nombre;
+?>            
+            </td>
+            <td>
+<?php
+        if ($obj->estado == 2) {
+?>           
+            Despedido
+<?php
+        } else {
+?>
+            <form method="POST" action="../controller/abogados.php?objeto=abogados&accion=listar&operacion=despedir"
+                  onsubmit="return confirm('Esta seguro que desea despedir al abogado.');">
+                <input type="hidden" name="id" value="<?php echo $obj->id ?>" />
+                <button type="submit"><img src='img/eliminar.png' width='24' height='24' />Despedir</button>
+            </form>
+<?php            
+        }
+?>
+            </td>
+        </tr>
+<?php
+        }
+?>
+            </tbody>
+        </table>
     </div>
-
+    </div>
 </div>

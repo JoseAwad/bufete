@@ -79,7 +79,8 @@
                                     ":telefonoCelular" => $telefonoCelular,
                                     ":telefonoFijo" => $telefonoFijo,
                                     ":perfil" => $perfil,
-                                    ":clave" => $clave));
+                                    ":clave" => $clave,
+                                    ":id" => $id));
 
     }
 

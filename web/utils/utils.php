@@ -12,3 +12,11 @@ function headerWrapper($path) {
     }
     return header('Location: '.$uri.$path);
 }
+
+function getParam($key, $value) {
+    return isset($_GET[$key]) ? $_GET[$key] : $value;
+}
+
+function postParam($key, $value) {
+    return isset($_POST[$key]) ? $_POST[$key] : $value;
+}
