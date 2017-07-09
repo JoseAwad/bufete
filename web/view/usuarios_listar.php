@@ -14,8 +14,12 @@ $lista = Usuario::buscarTodosUsuarios($filtroRutNumero, $filtroNombreCompleto, $
         <br>
         <table class="display" width="100%" cellspacing="0">
             <thead>
-                <form method="GET" action="../view/administrador_home.php">
-                    <input type="hidden" name="objeto" value="clientes">
+                <?php
+                $perfil = strtolower($_SESSION['perfil']);
+                $action = "../view/".$perfil."_home.php";
+                ?>
+                <form method="GET" action="<?php echo $action;?>">
+                    <input type="hidden" name="objeto" value="usuarios">
                     <input type="hidden" name="accion" value="listar">
                     <th>Rut número: 
                         <input type="text" name="rutNumero" value="<?php echo $filtroRutNumero; ?>">
