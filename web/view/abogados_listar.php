@@ -59,15 +59,22 @@ $lista = Abogado::buscarTodos($filtroRutNumero, $filtroNombreCompleto, $filtroEs
 ?>
         <tr>
             <td><?php echo $obj->id ?></td>
-            <td><?php echo $obj->rutNumero ?></td>
+            <td><?php echo $obj->rutNumero."-".$obj->rutDv ?></td>
             <td><?php echo $obj->nombreCompleto ?></td>
             <td><?php echo $obj->fechaContratacion ?></td>
             <td><?php echo $obj->valorHora ?></td>
             <td>
 <?php
             $abogadoEspecialidad = AbogadoEspecialidad::buscarPorIdAbogados($obj->id);
-            $especialidad = Especialidad::buscarPorId($abogadoEspecialidad->idEspecialidades);
-            echo $especialidad->nombre;
+            $especialidad = null;
+            if ($abogadoEspecialidad) {
+                $especialidad = Especialidad::buscarPorId($abogadoEspecialidad->idEspecialidades);
+            }
+            if ($especialidad) {
+                echo $especialidad->nombre;
+            } else {
+                echo "Sin especialidad";
+            }
 ?>            
             </td>
             <td>

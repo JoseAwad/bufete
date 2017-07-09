@@ -9,6 +9,11 @@
         mensaje: 'Ingrese rut'
       },
       {
+        id: 'formAddAbogado_dvNumero',
+        tipo: 'text',
+        mensaje: 'Ingrese dígito verificador'
+      },
+      {
         id: 'formAddAbogado_nombreCompleto',
         tipo: 'text',
         mensaje: 'Ingrese nombre'
@@ -29,6 +34,13 @@
         mensaje: 'Seleccione valor hora'
       }
     ];
+
+    var rutCompleto = $('#formAddAbogado_rutNumero').val() + '-' + $('#formAddAbogado_dvNumero').val()
+    if (!validaRut(rutCompleto)) {
+      alert('Ingrese un rut valido');
+      return false;
+    } 
+
     return validarFormulario(listaCampos);
   }
 </script>
@@ -48,13 +60,13 @@
               <h1>Nuevo abogado</h1>
               <div class="casillaFormulario">
                 <input type="text" id="formAddAbogado_rutNumero" name="rutNumero" placeholder="Ingrese rut" maxlength="10">-
-                <input type="text" id="formAddAbogado_dvNumero" name="dvNumero" placeholder="Ingrese digito verificador" maxlength="1">
+                <input type="text" id="formAddAbogado_dvNumero" name="dvNumero" placeholder="Ingrese dígito verificador" maxlength="1">
               </div>
               <div class="casillaFormulario">
-                <input type="text" id="formAddAbogado_nombreCompleto" name="nombreCompleto" placeholder="Ingrese nombre">
+                <input type="text" id="formAddAbogado_nombreCompleto" name="nombreCompleto" placeholder="Ingrese nombre" maxlength="100">
               </div>
               <div class="casillaFormulario">
-                <input type="date" id="formAddAbogado_fechaContratacion" name="fechaContratacion" placeholder="Ingrese fecha contratacion">
+                <input type="date" id="formAddAbogado_fechaContratacion" name="fechaContratacion" placeholder="Ingrese fecha contratacion"  maxlength="20">
               </div>  
               <div class="casillaFormulario">
                 <select id="formAddAbogado_idEspecialidad" name="idEspecialidad" class="selectpicker" data-style="btn">
@@ -67,7 +79,7 @@
                 </select>
               </div>
               <div class="casillaFormulario">
-                <input type="text" id="formAddAbogado_valorHora" name="valorHora" placeholder="Ingrese valor hora">
+                <input type="text" id="formAddAbogado_valorHora" name="valorHora" placeholder="Ingrese valor hora" maxlength="10">
               </div>  
               <div>
                   <button type="submit" class="btn">Agregar</button>

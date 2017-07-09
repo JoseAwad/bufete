@@ -7,6 +7,11 @@
         mensaje: 'Ingrese rut'
       },
       {
+        id: 'formAddCliente_dvNumero',
+        tipo: 'text',
+        mensaje: 'Ingrese dígito verificador'
+      },
+      {
         id: 'formAddCliente_nombreCompleto',
         tipo: 'text',
         mensaje: 'Ingrese nombre'
@@ -27,6 +32,13 @@
         mensaje: 'Ingrese clave'
       }
     ];
+
+    var rutCompleto = $('#formAddCliente_rutNumero').val() + '-' + $('#formAddCliente_dvNumero').val()
+    if (!validaRut(rutCompleto)) {
+      alert('Ingrese un rut valido');
+      return false;
+    } 
+
     return validarFormulario(listaCampos);
   }
 </script>
@@ -34,6 +46,7 @@
 <?php
   if(!empty($_SESSION['error_clientes'])) {
     echo "<script>alert('".$_SESSION['error_clientes']."');</script>";
+    $_SESSION['error_clientes'] = '';
   }
 ?>
 
@@ -47,25 +60,26 @@
         <div class="col-lg-10 formAddCliente">
               <h1>Nuevo cliente</h1>
               <div class="casillaFormulario">
-                <input type="text" id="formAddCliente_rutNumero" name="rutNumero" placeholder="Ingrese rut">
+                <input type="text" id="formAddCliente_rutNumero" name="rutNumero" placeholder="Ingrese rut" maxlength="10">
+                <input type="text" id="formAddCliente_dvNumero" name="dvNumero" placeholder="Ingrese dígito verificador" maxlength="1">
               </div>
               <div class="casillaFormulario">
-                <input type="text" id="formAddCliente_nombreCompleto" name="nombreCompleto" placeholder="Ingrese nombre">
+                <input type="text" id="formAddCliente_nombreCompleto" name="nombreCompleto" placeholder="Ingrese nombre" maxlength="100">
               </div>
               <div class="casillaFormulario">
-                <input type="date" id="formAddCliente_fechaIncorporacion" name="fechaIncorporacion" placeholder="Ingrese fecha incorporacion">
+                <input type="date" id="formAddCliente_fechaIncorporacion" name="fechaIncorporacion" placeholder="Ingrese fecha incorporacion" maxlength="20">
               </div>  
               <div class="casillaFormulario">
-                <input type="text" id="formAddCliente_direccion" name="direccion" placeholder="Ingrese dirección">
+                <input type="text" id="formAddCliente_direccion" name="direccion" placeholder="Ingrese dirección" maxlength="100">
               </div> 
               <div class="casillaFormulario">
-                <input type="text" id="formAddCliente_telefonoCelular" name="telefonoCelular" placeholder="Ingrese telefono Celular">
+                <input type="text" id="formAddCliente_telefonoCelular" name="telefonoCelular" placeholder="Ingrese telefono Celular" maxlength="12">
               </div>
               <div class="casillaFormulario">
-                <input type="text" id="formAddCliente_telefonoFijo" name="telefonoFijo" placeholder="Ingrese telefono Fijo">
+                <input type="text" id="formAddCliente_telefonoFijo" name="telefonoFijo" placeholder="Ingrese telefono Fijo" maxlength="12">
               </div>
               <div class="casillaFormulario">
-                <input type="text" id="formAddCliente_clave" name="clave" placeholder="Ingrese clave">
+                <input type="text" id="formAddCliente_clave" name="clave" placeholder="Ingrese clave" maxlength="6">
               </div>
               <div>                
                   <button type="submit" class="addUsuario_btn">Agregar</button>

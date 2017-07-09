@@ -55,7 +55,7 @@ $lista = Usuario::buscarTodosUsuarios($filtroRutNumero, $filtroNombreCompleto, $
 ?>
         <tr>
             <td><?php echo $obj->id ?></td>
-            <td><?php echo $obj->rutNumero ?></td>
+            <td><?php echo $obj->rutNumero."-".$obj->rutDv ?></td>
             <td><?php echo $obj->nombreCompleto ?></td>
             <td><?php echo $obj->fechaIncorporacion ?></td>
             <td><?php echo $obj->tipoUsuario ?></td>

@@ -20,3 +20,11 @@ function getParam($key, $value) {
 function postParam($key, $value) {
     return isset($_POST[$key]) ? $_POST[$key] : $value;
 }
+
+function calcularRutDv( $T ) {
+    $M=0;
+    $S=1;
+    for(;$T;$T=floor($T/10))
+        $S=($S+$T%10*(9-$M++%6))%11;
+    return $S?$S-1:'k';
+}

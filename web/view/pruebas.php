@@ -1,15 +1,10 @@
 <?php
 
+require('../utils/utils.php');
 require('../model/usuario.class.php');
 require('../model/especialidad.class.php');
 
-$data = Especialidad::buscarTodos();
-                print_r($data);
-
-echo '<option value="" selected="true" disabled>'."Seleccione proyecto".'</option>';
-                foreach ($data as $value) {
-                    echo '<option value="'.$value->id.'">'.$value->nombre.'</option>';
-                }
+print_r(calcularRutDv(11111111));
 
 /*
 $esp2 = Especialidad::buscarPorId(3);

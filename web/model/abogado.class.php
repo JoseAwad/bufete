@@ -3,6 +3,7 @@ class Abogado {
     
     var  $id;
     var  $rutNumero;
+    var  $rutDv;
     var  $nombreCompleto;
     var  $fechaContratacion;
     var  $valorHora;
@@ -32,6 +33,7 @@ class Abogado {
             $obj = new Abogado();
             $obj->id = $id;
             $obj->rutNumero = $rutNumero;
+            $obj->rutDv = calcularRutDv($rutNumero);
             $obj->nombreCompleto = $nombreCompleto;
             $obj->fechaContratacion = $fechaContratacion;
             $obj->valorHora = $valorHora;
@@ -50,29 +52,13 @@ class Abogado {
         return $rs->execute(array(':id' => $id ));
     }
 
-    public static function actualizar($id,$nombreCompleto, $valorHora){
-        $conn = BD::conn();
-        $sql = "update abogados set nombreCompleto = :nombreCompleto, valorHora = :valorHora where id = :id";
-        $rs = $conn->prepare($sql);
-        return $rs->execute(array(':nombreCompleto' => $nombreCompleto, 
-                                  ":valorHora" => $valorHora,
-                                  ":id" => $id));
-
-    }
-
     public static function buscarPorId($id) {
         $conn = BD::conn();
         $sql = "select * from abogados where id = ".$id;
         $rs = $conn->query($sql);
         if ($rs) {
             $row = $rs->fetch(PDO::FETCH_ASSOC);
-            $obj = new Abogado();
-            $obj->id = $row["id"];
-            $obj->rutNumero = $row["rutNumero"];
-            $obj->nombreCompleto = $row["nombreCompleto"];
-            $obj->fechaContratacion = $row["fechaContratacion"];
-            $obj->valorHora = $row["valorHora"];
-            $obj->estado = $row["estado"];
+            $obj = Abogado::rowToObject($row);
             return $obj;
         } else {
             return null;
@@ -100,13 +86,7 @@ class Abogado {
             $rows = $rs->fetchAll(PDO::FETCH_ASSOC);
             $arr = array();
             foreach ($rows as &$row) {
-                $obj = new Abogado();
-                $obj->id = $row["id"];
-                $obj->rutNumero = $row["rutNumero"];
-                $obj->nombreCompleto = $row["nombreCompleto"];
-                $obj->fechaContratacion = $row["fechaContratacion"];
-                $obj->valorHora = $row["valorHora"];
-                $obj->estado = $row["estado"];
+                $obj = Abogado::rowToObject($row);
                 array_push($arr, $obj);
             }
             return $arr;
@@ -115,16 +95,16 @@ class Abogado {
         }
     }
 
-    public static function borrar($id) {
-        $conn = BD::conn();
-        $sql = "delete from abogados where id = :id";
-        $rs = $conn->prepare($sql);
-        if ($rs->execute(array(":id" => $id))) {
-            return true;
-        } else {
-            return false;
-        }
+    private static function rowToObject($row) {
+        $obj = new Abogado();
+        $obj->id = $row["id"];
+        $obj->rutNumero = $row["rutNumero"];
+        $obj->rutDv = calcularRutDv($row["rutNumero"]);
+        $obj->nombreCompleto = $row["nombreCompleto"];
+        $obj->fechaContratacion = $row["fechaContratacion"];
+        $obj->valorHora = $row["valorHora"];
+        $obj->estado = $row["estado"];
+        return $obj;
     }
-
 }
 ?>

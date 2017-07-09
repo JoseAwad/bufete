@@ -55,6 +55,7 @@
             $obj = new Usuario();
             $obj->id = $id;
             $obj->rutNumero = $rutNumero;
+            $obj->rutDv = calcularRutDv($rutNumero);
             $obj->nombreCompleto = $nombreCompleto;
             $obj->fechaIncorporacion = $fechaIncorporacion;
             $obj->tipoUsuario = $tipoUsuario;
@@ -93,17 +94,7 @@
             if ($row["id"]=="") {
                 return null;
             }
-            $obj = new Usuario();
-            $obj->id = $row["id"];
-            $obj->rutNumero = $row["rutNumero"];
-            $obj->nombreCompleto = $row["nombreCompleto"];
-            $obj->fechaIncorporacion = $row["fechaIncorporacion"];
-            $obj->tipoUsuario = $row["tipoUsuario"];
-            $obj->direccion = $row["direccion"];
-            $obj->telefonoCelular = $row["telefonoCelular"];
-            $obj->telefonoFijo = $row["telefonoFijo"];
-            $obj->perfil = $row["perfil"];
-            $obj->clave = $row["clave"];
+            $obj = Usuario::rowToObject($row);
             return $obj;
         } else {
             return null;
@@ -116,20 +107,7 @@
         $rs = $conn->query($sql);
         if ($rs) {
             $row = $rs->fetch(PDO::FETCH_ASSOC);
-            if ($row["id"]=="") {
-                return null;
-            }
-            $obj = new Usuario();
-            $obj->id = $row["id"];
-            $obj->rutNumero = $row["rutNumero"];
-            $obj->nombreCompleto = $row["nombreCompleto"];
-            $obj->fechaIncorporacion = $row["fechaIncorporacion"];
-            $obj->tipoUsuario = $row["tipoUsuario"];
-            $obj->direccion = $row["direccion"];
-            $obj->telefonoCelular = $row["telefonoCelular"];
-            $obj->telefonoFijo = $row["telefonoFijo"];
-            $obj->perfil = $row["perfil"];
-            $obj->clave = $row["clave"];
+            $obj = Usuario::rowToObject($row);
             return $obj;
         } else {
             return null;
@@ -144,17 +122,7 @@
             $rows = $rs->fetchAll(PDO::FETCH_ASSOC);
             $arr = array();
             foreach ($rows as &$row) {
-                $obj = new Usuario();
-                $obj->id = $row["id"];
-                $obj->rutNumero = $row["rutNumero"];
-                $obj->nombreCompleto = $row["nombreCompleto"];
-                $obj->fechaIncorporacion = $row["fechaIncorporacion"];
-                $obj->tipoUsuario = $row["tipoUsuario"];
-                $obj->direccion = $row["direccion"];
-                $obj->telefonoCelular = $row["telefonoCelular"];
-                $obj->telefonoFijo = $row["telefonoFijo"];
-                $obj->perfil = $row["perfil"];
-                $obj->clave = $row["clave"];
+                $obj = Usuario::rowToObject($row);
                 array_push($arr, $obj);
             }
             return $arr;
@@ -185,10 +153,9 @@
             } else {
                 return false;
             }
-        }else{
+        } else{
             return false;
         }
-        
     }
 
     public static function buscarTodosPorPerfil($rutNumero, $nombreCompleto, $perfil) {
@@ -212,17 +179,7 @@
             $rows = $rs->fetchAll(PDO::FETCH_ASSOC);
             $arr = array();
             foreach ($rows as &$row) {
-                $obj = new Usuario();
-                $obj->id = $row["id"];
-                $obj->rutNumero = $row["rutNumero"];
-                $obj->nombreCompleto = $row["nombreCompleto"];
-                $obj->fechaIncorporacion = $row["fechaIncorporacion"];
-                $obj->tipoUsuario = $row["tipoUsuario"];
-                $obj->direccion = $row["direccion"];
-                $obj->telefonoCelular = $row["telefonoCelular"];
-                $obj->telefonoFijo = $row["telefonoFijo"];
-                $obj->perfil = $row["perfil"];
-                $obj->clave = $row["clave"];
+                $obj = Usuario::rowToObject($row);
                 array_push($arr, $obj);
             }
             return $arr;
@@ -252,23 +209,29 @@
             $rows = $rs->fetchAll(PDO::FETCH_ASSOC);
             $arr = array();
             foreach ($rows as &$row) {
-                $obj = new Usuario();
-                $obj->id = $row["id"];
-                $obj->rutNumero = $row["rutNumero"];
-                $obj->nombreCompleto = $row["nombreCompleto"];
-                $obj->fechaIncorporacion = $row["fechaIncorporacion"];
-                $obj->tipoUsuario = $row["tipoUsuario"];
-                $obj->direccion = $row["direccion"];
-                $obj->telefonoCelular = $row["telefonoCelular"];
-                $obj->telefonoFijo = $row["telefonoFijo"];
-                $obj->perfil = $row["perfil"];
-                $obj->clave = $row["clave"];
+                $obj = Usuario::rowToObject($row);
                 array_push($arr, $obj);
             }
             return $arr;
         } else {
             return array();
         }
+    }
+
+    private static function rowToObject($row) {
+        $obj = new Usuario();
+        $obj->id = $row["id"];
+        $obj->rutNumero = $row["rutNumero"];
+        $obj->rutDv = calcularRutDv($row["rutNumero"]);
+        $obj->nombreCompleto = $row["nombreCompleto"];
+        $obj->fechaIncorporacion = $row["fechaIncorporacion"];
+        $obj->tipoUsuario = $row["tipoUsuario"];
+        $obj->direccion = $row["direccion"];
+        $obj->telefonoCelular = $row["telefonoCelular"];
+        $obj->telefonoFijo = $row["telefonoFijo"];
+        $obj->perfil = $row["perfil"];
+        $obj->clave = $row["clave"];
+        return $obj;
     }
   }
 
