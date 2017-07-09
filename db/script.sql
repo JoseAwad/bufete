@@ -1,9 +1,15 @@
+DROP TABLE IF EXISTS atenciones;
+DROP TABLE IF EXISTS abogadosEspecialidades;
+DROP TABLE IF EXISTS especialidades;
+DROP TABLE IF EXISTS usuarios;
+DROP TABLE IF EXISTS abogados;
+
 create table usuarios(
     id int not null AUTO_INCREMENT,
     rutNumero int(11) not null,
     nombreCompleto varchar(100) not null,
     fechaIncorporacion date not null,
-    tipoUsuario varchar(50) not null,
+    tipoUsuario varchar(1) not null,
     direccion varchar(255) ,
     telefonoCelular varchar(12),
     telefonoFijo varchar(12),
