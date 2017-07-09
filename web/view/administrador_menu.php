@@ -31,7 +31,6 @@ if (!empty($_GET['objeto']) && $_GET['objeto'] == 'clientes') {
                     <ul class="nav navbar-nav">
                         <li><a href="administrador_home.php?objeto=clientes&accion=listar">Listar</a></li>
                         <li><a href="administrador_home.php?objeto=clientes&accion=registrar">Registrar</a></li>
-                        <li><a href="administrador_home.php?objeto=clientes&accion=eliminar">Eliminar</a></li>
                     </ul>
                 </div>
             </nav>
@@ -74,7 +73,6 @@ if (!empty($_GET['objeto']) && $_GET['objeto'] == 'usuarios') {
                     <ul class="nav navbar-nav">
                         <li><a href="administrador_home.php?objeto=usuarios&accion=listar">Listar</a></li>
                         <li><a href="administrador_home.php?objeto=usuarios&accion=registrar">Registrar</a></li>
-                        <li><a href="administrador_home.php?objeto=usuarios&accion=eliminar">Eliminar</a></li>
                     </ul>
                 </div>
             </nav>

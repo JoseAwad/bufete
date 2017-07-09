@@ -48,6 +48,11 @@ body{
           error = mensaje;
           break;
         }
+      } else if (tipo == 'date') {
+        if (valor == '' || valor.length == 0) {
+          error = mensaje;
+          break;
+        }
       }
     }
     if (error == '') {

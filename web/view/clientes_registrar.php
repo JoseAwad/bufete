@@ -1,6 +1,47 @@
+<script>
+  function validarFormulario_formAddCliente() {
+    var listaCampos = [
+      {
+        id: 'formAddCliente_rutNumero',
+        tipo: 'number',
+        mensaje: 'Ingrese rut'
+      },
+      {
+        id: 'formAddCliente_nombreCompleto',
+        tipo: 'text',
+        mensaje: 'Ingrese nombre'
+      },
+      {
+        id: 'formAddCliente_fechaIncorporacion',
+        tipo: 'date',
+        mensaje: 'Ingrese fecha de incorporación'
+      },
+      {
+        id: 'formAddCliente_direccion',
+        tipo: 'text',
+        mensaje: 'Ingrese dirección'
+      },
+      {
+        id: 'formAddCliente_clave',
+        tipo: 'text',
+        mensaje: 'Ingrese clave'
+      }
+    ];
+    return validarFormulario(listaCampos);
+  }
+</script>
+
+<?php
+  if(!empty($_SESSION['error_clientes'])) {
+    echo "<script>alert('".$_SESSION['error_clientes']."');</script>";
+  }
+?>
+
 <div class="container" style="width: 100%;">
 
-  <form method="POST" action="../controller/clientes.php?objeto=clientes&accion=registrar&operacion=registrar">
+  <form method="POST" action="../controller/clientes.php?objeto=clientes&accion=registrar&operacion=registrar"
+        onsubmit="return validarFormulario_formAddCliente();">
+
   <div class="row">
         <div class="col-lg-1"></div>
         <div class="col-lg-10 formAddCliente">
