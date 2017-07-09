@@ -24,6 +24,7 @@ create table abogados(
     nombreCompleto varchar(100) not null,
     fechaContratacion date not null,
     valorHora int(11) not null,
+    estado int(1) not null,
     PRIMARY KEY (id) 
 );
 
