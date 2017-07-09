@@ -20,10 +20,9 @@ if (!empty($_GET['objeto']) && !empty($_GET['accion']) && !empty($_GET['operacio
             $abogadoEspecialidad = AbogadoEspecialidad::crear($abogado->id, $idEspecialidad);
         }
 
-    } else if ($_GET['operacion'] == 'eliminar') {    
+    } else if ($_GET['operacion'] == 'eliminar') {   
 
     }
-
     headerWrapper('/view/administrador_home.php?objeto='.$_GET['objeto'].'&accion='.$_GET['accion']);
 }
 
