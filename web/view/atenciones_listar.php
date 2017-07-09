@@ -3,7 +3,17 @@
 
 $filtroEstado= getParam('estado','');
 
-$lista = Atencion::buscarTodosAtenciones($filtroEstado); 
+$rutNumeroClienteConectado = $_SESSION['rutNumero'];
+$perfil = $_SESSION['perfil'];
+$lista = array();
+
+if ($perfil == Usuario::$PERFIL_CLIENTE) {
+    $usuarioConectado = Usuario::buscarPorRutNumero($rutNumeroClienteConectado);
+    $lista = Atencion::buscarAtencionesCliente($filtroEstado, $usuarioConectado->id);
+} else {
+    $lista = Atencion::buscarTodosAtenciones($filtroEstado);
+}
+ 
 ?>
 <div class="row">
     <div class="col-lg-1"></div>
@@ -18,10 +28,17 @@ $lista = Atencion::buscarTodosAtenciones($filtroEstado);
                 ?>
                 <form method="GET" action="<?php echo $action;?>">
                     <input type="hidden" name="objeto" value="atenciones">
-                    <input type="hidden" name="accion" value="listar">
-                    <th>Estado: 
-                        <input type="text" name="estado" value="<?php echo $filtroEstado; ?>">
-                    </th>
+                    <input type="hidden" name="accion" value="listar">                    
+                <th>
+                <select  name="estado">
+                    <option value="" selected >todos</option>
+                    <option value="AGENDADA" >AGENDADA</option>
+                    <option value="CONFIRMADA" >CONFIRMADA</option>
+                    <option value="ANULADA" >ANULADA</option>
+                    <option value="PERDIDA" >PERDIDA</option>
+                    <option value="REALIZADA">REALIZADA</option>
+                </select>
+                </th>
                     <th>
                         <button type="submit">Buscar</button>
                     </th>

@@ -66,13 +66,7 @@ class Atencion {
         $rs = $conn->query($sql);
         if ($rs) {
             $row = $rs->fetch(PDO::FETCH_ASSOC);
-            $obj = new Atencion();
-            $obj->id = $row["id"];
-            $obj->fechaHora = $row["fechaHora"];
-            $obj->idAbogados = $row["idAbogados"];
-            $obj->idUsuarios = $row["idUsuarios"];
-            $obj->estado = $row["estado"];
-            $obj->valor = $row["valor"];
+            $obj = Atencion::rowToObject($row);
             return $obj;
         } else {
             return null;
@@ -87,13 +81,7 @@ class Atencion {
             $rows = $rs->fetchAll(PDO::FETCH_ASSOC);
             $arr = array();
             foreach ($rows as &$row) {
-                $obj = new Atencion();
-                $obj->id = $row["id"];
-                $obj->fechaHora = $row["fechaHora"];
-                $obj->idAbogados = $row["idAbogados"];
-                $obj->idUsuarios = $row["idUsuarios"];
-                $obj->estado = $row["estado"];
-                $obj->valor = $row["valor"];
+                $obj = Atencion::rowToObject($row);
                 array_push($arr, $obj);
             }
             return $arr;
@@ -120,7 +108,7 @@ class Atencion {
         return $rs->execute(array(':id' => $id,':estado'=>$estado));
     }
 
-public static function buscarTodosAtenciones($estado) {
+    public static function buscarTodosAtenciones($estado) {
         $conn = BD::conn();
         $sql = "select * from atenciones";
         if (!empty($estado)) {
@@ -135,19 +123,51 @@ public static function buscarTodosAtenciones($estado) {
             $rows = $rs->fetchAll(PDO::FETCH_ASSOC);
             $arr = array();
             foreach ($rows as &$row) {
-                $obj = new Atencion();
-                $obj->id = $row["id"];
-                $obj->fechaHora = $row["fechaHora"];
-                $obj->idAbogados = $row["idAbogados"];
-                $obj->idUsuarios = $row["idUsuarios"];
-                $obj->estado = $row["estado"];
-                $obj->valor = $row["valor"];
+                $obj = Atencion::rowToObject($row);
                 array_push($arr, $obj);
             }
             return $arr;
         } else {
             return array();
         }
+    }
+
+    public static function buscarAtencionesCliente($estado, $idClienteConectado) {
+        $conn = BD::conn();
+        $sql = "select * from atenciones";
+        if (!empty($estado) || $idClienteConectado > 0) {
+            $sqlWhere = array();
+            if (!empty($estado)) {
+                array_push($sqlWhere, " estado like  '%".$estado."%'");
+            }
+            if ($idClienteConectado > 0) {
+                array_push($sqlWhere, " idUsuarios = ".$idClienteConectado);
+            }
+            $sql = $sql." where ".implode(" and ", $sqlWhere);
+        }
+        $rs = $conn->query($sql);
+        if ($rs) {
+            $rows = $rs->fetchAll(PDO::FETCH_ASSOC);
+            $arr = array();
+            foreach ($rows as &$row) {
+                $obj = Atencion::rowToObject($row);
+                array_push($arr, $obj);
+            }
+            return $arr;
+        } else {
+            return array();
+        }
+    }
+
+    private static function rowToObject($row) {
+        $obj = new Atencion();
+        $obj->id = $row["id"];
+        $obj->fechaHora = $row["fechaHora"];
+        $obj->idAbogados = $row["idAbogados"];
+        $obj->idUsuarios = $row["idUsuarios"];
+        $obj->estado = $row["estado"];
+        $obj->valor = $row["valor"];
+        return $obj;
     }
 }
 ?>

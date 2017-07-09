@@ -22,6 +22,11 @@
         mensaje: 'Ingrese fecha de incorporación'
       },
       {
+        id: 'formAddCliente_tipoUsuario',
+        tipo: 'text',
+        mensaje: 'Seleccione tipo cliente'
+      },
+      {
         id: 'formAddCliente_direccion',
         tipo: 'text',
         mensaje: 'Ingrese dirección'
@@ -68,7 +73,14 @@
               </div>
               <div class="casillaFormulario">
                 <input type="date" id="formAddCliente_fechaIncorporacion" name="fechaIncorporacion" placeholder="Ingrese fecha incorporacion" maxlength="20">
-              </div>  
+              </div>
+              <div>
+                  <select id="formAddCliente_tipoUsuario" name="tipoUsuario" class="selectpicker" data-style="btn">
+                      <option value="">Seleccione tipo Cliente</option>
+                      <option value="N">NATURAL</option>
+                      <option value="J">JURIDICO</option>
+                  </select>
+              </div> 
               <div class="casillaFormulario">
                 <input type="text" id="formAddCliente_direccion" name="direccion" placeholder="Ingrese dirección" maxlength="100">
               </div> 

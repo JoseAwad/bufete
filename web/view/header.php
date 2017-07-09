@@ -20,9 +20,9 @@
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <link rel="stylesheet" href="css/style.css">
 
-        <link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.min.css"/ >
+        <link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.min.css"/>
         <script src="js/jquery.datetimepicker.full.min.js"></script>
-</head>
+
 <style>
 body{
     background:url(Vista/img/fondo.jpg) repeat scroll;
@@ -87,4 +87,5 @@ body{
 	}
 
 </script>  
+</head>
 <body>
