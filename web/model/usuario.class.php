@@ -1,6 +1,9 @@
 <?php 
   class Usuario {
 
+    public static $TIPO_JURIDICO = 'J';
+    public static $TIPO_NATURAL = 'N';
+
     public static $PERFIL_GERENTE = 'GERENTE';
     public static $PERFIL_ADMINISTRADOR = 'ADMINISTRADOR';
     public static $PERFIL_SECRETARIA = 'SECRETARIA';
