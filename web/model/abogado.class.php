@@ -48,7 +48,6 @@ class Abogado {
         $sql = "update abogados set estado = 2 where id = :id";
         $rs = $conn->prepare($sql);
         return $rs->execute(array(':id' => $id ));
-
     }
 
     public static function actualizar($id,$nombreCompleto, $valorHora){
@@ -89,7 +88,7 @@ class Abogado {
                 array_push($sqlWhere, " rutNumero = ".$rutNumero);      
             }
             if (!empty($nombreCompleto)) {
-                array_push($sqlWhere, " nombreCompleto like '".$nombreCompleto."'");
+                array_push($sqlWhere, " nombreCompleto like '%".$nombreCompleto."%'");
             }
             if ($estado > 0) {
                 array_push($sqlWhere, " estado = ".$estado);
@@ -112,7 +111,7 @@ class Abogado {
             }
             return $arr;
         } else {
-            return null;
+            return array();
         }
     }
 

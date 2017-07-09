@@ -1,34 +1,74 @@
 <div class="container" style="width: 100%;">
 
-  <form method="POST" action="../controller/abogados.php?objeto=abogados&accion=registrar&operacion=registrar">
+<script>
+  function validarFormulario_formAddAbogado() {
+    var listaCampos = [
+      {
+        id: 'formAddAbogado_rutNumero',
+        tipo: 'number',
+        mensaje: 'Ingrese rut'
+      },
+      {
+        id: 'formAddAbogado_nombreCompleto',
+        tipo: 'text',
+        mensaje: 'Ingrese nombre'
+      },
+      {
+        id: 'formAddAbogado_fechaContratacion',
+        tipo: 'text',
+        mensaje: 'Ingrese fecha de contratación'
+      },
+      {
+        id: 'formAddAbogado_idEspecialidad',
+        tipo: 'number',
+        mensaje: 'Seleccione especialidad'
+      },
+      {
+        id: 'formAddAbogado__valorHora',
+        tipo: 'number',
+        mensaje: 'Seleccione valor hora'
+      }
+    ];
+    return validarFormulario(listaCampos);
+  }
+</script>
+
+<?php
+  if(!empty($_SESSION['error_abogados'])) {
+    echo "<script>alert('".$_SESSION['error_abogados']."');</script>";
+  }
+?>
+
+  <form method="POST" action="../controller/abogados.php?objeto=abogados&accion=registrar&operacion=registrar"
+        onsubmit="return validarFormulario_formAddAbogado();">
   <div class="row">
         <div class="col-lg-1"></div>
-        <div class="col-lg-10 Formulario_AddUser">
+        <div class="col-lg-10 formAddAbogado">
               <h1>Nuevo abogado</h1>
-              <div class="casilla_addUser">
-                <input type="text" class="" id="rutNumero" name="rutNumero" placeholder="Ingrese rut">
+              <div class="casillaFormulario">
+                <input type="text" id="formAddAbogado_rutNumero" name="rutNumero" placeholder="Ingrese rut">
               </div>
-              <div class="casilla_addUser">
-                <input type="text" class="" id="nombreCompleto" name="nombreCompleto" placeholder="Ingrese nombre">
+              <div class="casillaFormulario">
+                <input type="text" id="formAddAbogado_nombreCompleto" name="nombreCompleto" placeholder="Ingrese nombre">
               </div>
-              <div class="casilla_addUser">
-                <input type="date" class="" id="fechaContratacion" name="fechaContratacion" placeholder="Ingrese fecha contratacion">
+              <div class="casillaFormulario">
+                <input type="date" id="formAddAbogado_fechaContratacion" name="fechaContratacion" placeholder="Ingrese fecha contratacion">
               </div>  
-              <div class="casilla_addUser">
-                <select name="idEspecialidad" class="selectpicker" data-style="btn">
+              <div class="casillaFormulario">
+                <select id="formAddAbogado_idEspecialidad" name="idEspecialidad" class="selectpicker" data-style="btn">
                 <?php
                 $data = Especialidad::buscarTodos();
-                echo '<option value="" selected="true" disabled>'."Seleccione especialidad".'</option>';
+                echo '<option value="-1" selected="true" disabled>'."Seleccione especialidad".'</option>';
                 foreach ($data as $value) {
                     echo '<option value="'.$value->id.'">'.$value->nombre.'</option>';
                 }?>
                 </select>
               </div>
-              <div class="casilla_addUser">
-                <input type="number" class="" id="valorHora" name="valorHora" placeholder="Ingrese valor hora">
+              <div class="casillaFormulario">
+                <input type="number" id="formAddAbogado__valorHora" name="valorHora" placeholder="Ingrese valor hora">
               </div>  
               <div>
-                  <button type="submit" class="addUsuario_btn">Agregar</button>
+                  <button type="submit" class="btn">Agregar</button>
               </div>
         </div>  
         <div class="col-lg-1"></div>
