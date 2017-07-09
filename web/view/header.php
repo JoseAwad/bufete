@@ -19,6 +19,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/i18n/defaults-*.min.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <link rel="stylesheet" href="css/style.css">
+
+        <link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.min.css"/ >
+        <script src="js/jquery.datetimepicker.full.min.js"></script>
 </head>
 <style>
 body{

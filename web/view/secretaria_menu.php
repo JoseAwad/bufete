@@ -69,6 +69,7 @@ if (!empty($_GET['objeto']) && $_GET['objeto'] == 'atenciones') {
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <ul class="nav navbar-nav">
+                        <li><a href="secretaria_home.php?objeto=atenciones&accion=registrar">Registrar</a></li>
                         <li><a href="secretaria_home.php?objeto=atenciones&accion=listar">Listar</a></li>
                     </ul>
                 </div>

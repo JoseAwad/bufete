@@ -1,6 +1,12 @@
 <?php
 class Atencion {
 
+    public static $ESTADO_AGENDADA="AGENDADA";
+    public static $ESTADO_CONFIRMADA="CONFIRMADA";
+    public static $ESTADO_ANULADA="ANULADA";
+    public static $ESTADO_PERDIDA="PERDIDA";
+    public static $ESTADO_REALIZADA="REALIZADA";
+
     var $id;
     var $fechaHora;
     var $idAbogados;
@@ -22,10 +28,10 @@ class Atencion {
         $sql = "insert into atenciones(fechaHora, idAbogados, idUsuarios, estado, valor) values(:fechaHora, :idAbogados, :idUsuarios, :estado, :valor)";
         $rs = $conn->prepare($sql);
         $exito = $rs->execute(array(':fechaHora' => $fechaHora, 
-                                    ":idAbogados" => idAbogados, 
-                                    ":idUsuarios" => idUsuarios, 
-                                    ":estado" => estado,
-                                    ":valor" => valor));
+                                    ":idAbogados" => $idAbogados, 
+                                    ":idUsuarios" => $idUsuarios, 
+                                    ":estado" => $estado,
+                                    ":valor" => $valor));
         if ($exito) {
             $rs = $conn->query("select LAST_INSERT_ID()")->fetch();
             $id = $rs[0];
@@ -47,10 +53,10 @@ class Atencion {
         $sql = "update atenciones set fechaHora = :fechaHora, idAbogados = :idAbogados, idUsuarios = :idUsuarios, estado = :estado, valor = :valor where id = :id";
         $rs = $conn->prepare($sql);
         return $rs->execute(array(':fechaHora' => $fechaHora, 
-                                    ":idAbogados" => idAbogados, 
-                                    ":idUsuarios" => idUsuarios, 
-                                    ":estado" => estado,
-                                    ":valor" => valor,
+                                    ":idAbogados" => $idAbogados, 
+                                    ":idUsuarios" => $idUsuarios, 
+                                    ":estado" => $estado,
+                                    ":valor" => $valor,
                                     ":id" => $id));
     }
 
@@ -105,6 +111,13 @@ class Atencion {
         } else {
             return false;
         }
+    }
+
+    public static function cambiarEstado($id,$estado){
+        $conn = BD::conn();
+        $sql = "update atenciones set estado = :estado where id = :id";
+        $rs = $conn->prepare($sql);
+        return $rs->execute(array(':id' => $id,':estado'=>$estado));
     }
 }
 ?>
