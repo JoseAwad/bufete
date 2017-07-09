@@ -190,6 +190,46 @@
         }
         
     }
+
+    public static function buscarTodosPorPerfil($rutNumero, $nombreCompleto, $perfil) {
+        $conn = BD::conn();
+        $sql = "select * from usuarios";
+        if (!empty($rutNumero) || !empty($nombreCompleto) || !empty($perfil) ) {
+            $sqlWhere = array();
+            if (!empty($rutNumero)) {
+                array_push($sqlWhere, " rutNumero = ".$rutNumero);      
+            }
+            if (!empty($nombreCompleto)) {
+                array_push($sqlWhere, " nombreCompleto like '%".$nombreCompleto."%'");
+            }
+            if (!empty($perfil)) {
+                array_push($sqlWhere, " perfil = '".$perfil."'");
+            }
+            $sql = $sql." where ".implode(" and ", $sqlWhere);
+        }
+        $rs = $conn->query($sql);
+        if ($rs) {
+            $rows = $rs->fetchAll(PDO::FETCH_ASSOC);
+            $arr = array();
+            foreach ($rows as &$row) {
+                $obj = new Usuario();
+                $obj->id = $row["id"];
+                $obj->rutNumero = $row["rutNumero"];
+                $obj->nombreCompleto = $row["nombreCompleto"];
+                $obj->fechaIncorporacion = $row["fechaIncorporacion"];
+                $obj->tipoUsuario = $row["tipoUsuario"];
+                $obj->direccion = $row["direccion"];
+                $obj->telefonoCelular = $row["telefonoCelular"];
+                $obj->telefonoFijo = $row["telefonoFijo"];
+                $obj->perfil = $row["perfil"];
+                $obj->clave = $row["clave"];
+                array_push($arr, $obj);
+            }
+            return $arr;
+        } else {
+            return array();
+        }
+    }
   }
 
 ?>
