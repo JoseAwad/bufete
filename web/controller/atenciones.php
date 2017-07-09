@@ -32,6 +32,10 @@ if (!empty($objeto) && !empty($accion) && !empty($operacion)) {
         if (!Atencion::cambiarEstado($id,$estado)) {
             $_SESSION['error_atenciones'] = 'No fue posible eliminar la Atencion';
         }
+    }else if ($operacion == 'eliminar') {    
+
+        $id = postParam('id', 0);
+        Atencion::borrar($id);
     }
 
     headerWrapper('/view/secretaria_home.php?objeto='.$objeto.'&accion='.$accion);
