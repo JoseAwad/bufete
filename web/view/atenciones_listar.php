@@ -1,9 +1,9 @@
 <div class="container" style="width: 100%;">
 <?php
 
-$filtroRutNumero = getParam('rutNumero', '');
+$filtroEstado= getParam('estado','');
 
-$lista = Atencion::buscarTodos($filtroRutNumero); 
+$lista = Atencion::buscarTodosAtenciones($filtroEstado); 
 ?>
 <div class="row">
     <div class="col-lg-1"></div>
@@ -19,8 +19,8 @@ $lista = Atencion::buscarTodos($filtroRutNumero);
                 <form method="GET" action="<?php echo $action;?>">
                     <input type="hidden" name="objeto" value="atenciones">
                     <input type="hidden" name="accion" value="listar">
-                    <th>Rut número: 
-                        <input type="text" name="rutNumero" value="<?php echo $filtroRutNumero; ?>">
+                    <th>Estado: 
+                        <input type="text" name="estado" value="<?php echo $filtroEstado; ?>">
                     </th>
                     <th>
                         <button type="submit">Buscar</button>
