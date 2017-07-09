@@ -1,5 +1,5 @@
 <?php
-class Atencion{
+class Atencion {
 
     var $id;
     var $fechaHora;
@@ -7,6 +7,15 @@ class Atencion{
     var $idUsuarios;
     var $estado;
     var $valor;
+
+    public static function fromJson($json) {
+        $data = json_decode($json, true);
+        $u = new Atencion();
+        foreach ($data AS $key => $value) {
+            $u->{$key} = $value;
+        }
+        return $u;
+    }
 
     public static function crear($fechaHora, $idAbogados, $idUsuarios, $estado, $valor){
         $conn = BD::conn();

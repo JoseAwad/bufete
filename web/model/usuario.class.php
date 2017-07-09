@@ -19,6 +19,15 @@
     var $telefonoFijo;
     var $perfil;
     var $clave;
+    
+    public static function fromJson($json) {
+        $data = json_decode($json, true);
+        $u = new Usuario();
+        foreach ($data AS $key => $value) {
+            $u->{$key} = $value;
+        }
+        return $u;
+    }
 
     public static function crear($rutNumero, $nombreCompleto, $fechaIncorporacion, $tipoUsuario, $direccion, $telefonoCelular, $telefonoFijo, $perfil, $clave) {
         

@@ -3,6 +3,16 @@ delete from usuarios where rutNumero = 11111111;
 insert into usuarios (rutNumero, nombreCompleto, fechaIncorporacion, tipoUsuario, perfil, clave)
 values (11111111, 'admin1', NOW(), 'N', 'ADMINISTRADOR', '$2y$10$wE4.M2bzuOPj8X3nXTOKYetevujc1ZheuLT3Qz/G1JYg2lIqryl4a');
 
+insert into usuarios (rutNumero, nombreCompleto, fechaIncorporacion, tipoUsuario, perfil, clave)
+values (1111, 'gerente1', NOW(), 'N', 'GERENTE', '$2y$10$wE4.M2bzuOPj8X3nXTOKYetevujc1ZheuLT3Qz/G1JYg2lIqryl4a');
+
+insert into usuarios (rutNumero, nombreCompleto, fechaIncorporacion, tipoUsuario, perfil, clave)
+values (2222, 'secretaria', NOW(), 'N', 'SECRETARIA', '$2y$10$wE4.M2bzuOPj8X3nXTOKYetevujc1ZheuLT3Qz/G1JYg2lIqryl4a');
+
+insert into usuarios (rutNumero, nombreCompleto, fechaIncorporacion, tipoUsuario, perfil, clave)
+values (3333, 'cliente1', NOW(), 'N', 'CLIENTE', '$2y$10$wE4.M2bzuOPj8X3nXTOKYetevujc1ZheuLT3Qz/G1JYg2lIqryl4a');
+
+
 delete from especialidades;
 
 insert into especialidades (nombre) values('Accidentes de Tráfico');

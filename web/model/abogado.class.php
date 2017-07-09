@@ -1,11 +1,20 @@
 <?php
-class Abogado{
+class Abogado {
     
     var  $id;
     var  $rutNumero;
     var  $nombreCompleto;
     var  $fechaContratacion;
     var  $valorHora;
+
+    public static function fromJson($json) {
+        $data = json_decode($json, true);
+        $u = new Abogado();
+        foreach ($data AS $key => $value) {
+            $u->{$key} = $value;
+        }
+        return $u;
+    }
     
     public static function crear($rutNumero, $nombreCompleto, $fechaContratacion, $valorHora){
         $conn = BD::conn();

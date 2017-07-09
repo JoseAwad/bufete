@@ -7,6 +7,15 @@ class Especialidad {
     var $id;
     var $nombre;
 
+    public static function fromJson($json) {
+        $data = json_decode($json, true);
+        $u = new Especialidad();
+        foreach ($data AS $key => $value) {
+            $u->{$key} = $value;
+        }
+        return $u;
+    }
+
     public static function crear($nombre) {
         $conn = BD::conn();
         $sql = "insert into especialidades(nombre) values(:nombre)";

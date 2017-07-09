@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <html lang="en">
 <head>
   <title>Bufete</title>
@@ -11,12 +14,14 @@
 <body>
 <div class="container">
     <?php
-    if($flagError){ ?>
+    if(!empty($_SESSION['error'])){ 
+    ?>
         <div class="alert alert-danger alert-dismissable">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          <strong>ERROR!</strong><?php echo $msgError; ?>
+          <strong>ERROR!</strong><?php echo $_SESSION['error']; ?>
         </div>
-    <?php    
+    <?php
+        $_SESSION['error'] = '';
     }
     ?>
     <div class="row">
