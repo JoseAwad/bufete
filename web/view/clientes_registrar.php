@@ -94,7 +94,7 @@
                 <input type="text" id="formAddCliente_clave" name="clave" placeholder="Ingrese clave" maxlength="6">
               </div>
               <div>                
-                  <button type="submit" class="btn">Agregar</button>
+                  <button type="submit" class="btn">Registrar</button>
               </div>
         </div>  
         <div class="col-lg-1"></div>

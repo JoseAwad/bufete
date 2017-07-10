@@ -83,7 +83,7 @@
                 <input type="text" id="formAddAbogado_valorHora" name="valorHora" placeholder="Ingrese valor hora" maxlength="10">
               </div>  
               <div>
-                  <button type="submit" class="btn">Agregar</button>
+                  <button type="submit" class="btn">Contratar</button>
               </div>
         </div>  
         <div class="col-lg-1"></div>

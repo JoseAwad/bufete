@@ -5,22 +5,22 @@
       {
         id: 'formAddAtencion_fechaHora',
         tipo: 'date',
-        mensaje: 'Ingrese fecha de incorporación'
+        mensaje: 'Ingrese fecha de atención'
       },
       {
         id: 'formAddAtencion_idAbogado',
         tipo: 'number',
-        mensaje: 'Ingrese nombre'
+        mensaje: 'Ingrese Abogado'
       },
       {
         id: 'formAddAtencion_idUsuario',
         tipo: 'number',
-        mensaje: 'Ingrese dirección'
+        mensaje: 'Ingrese cliente'
       },
       {
         id: 'formAddAtencion_valor',
         tipo: 'number',
-        mensaje: 'Ingrese perfil'
+        mensaje: 'Ingrese valor'
       },
     ];
     return validarFormulario(listaCampos);
