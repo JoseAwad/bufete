@@ -318,7 +318,7 @@ body{
 	width: 154px;
 }
 #footer div .connect a {
-	background: url(../../Vista/img/icons.png) no-repeat;
+	background: url(../../view/img/icons.png) no-repeat;
 	display: block;
 	float: left;
 	height: 28px;
