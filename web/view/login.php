@@ -30,10 +30,10 @@ session_start();
             <h1>Login</h1>
                 <form action="../controller/login.php" method="POST">
                     <div class="form-group">
-                        <input type="text" class=" Login_un" id="rutNumero" name="rutNumero" placeholder="Ingrese Rut número" maxlength="10">
+                        <input type="text" class=" casillaFormulario" id="rutNumero" name="rutNumero" placeholder="Ingrese Rut" maxlength="10">
                     </div>
                     <div class="form-group">
-                        <input type="password" class=" Login_ps" id="clave" name="clave"  placeholder="Ingrese Contraseña" maxlength="6">
+                        <input type="password" class=" casillaFormulario" id="clave" name="clave"  placeholder="Ingrese Contraseña" maxlength="6">
                     </div>
                     <button type="submit" class="btn btn-default Login_btn">Ingresar</button>
                 </form>

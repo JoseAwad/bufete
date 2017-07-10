@@ -4,13 +4,20 @@
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="administrador_home.php">Menú Administrador</a>
+                        <a class="navbar-brand" href="administrador_home.php">Menú Cliente</a>
                     </div>
                     <ul class="nav navbar-nav">
                         <li><a href="cliente_home.php?objeto=atenciones&accion=listar">Atenciones</a></li>
                     </ul>
                     <div class="right">
-                        <a href="../controller/cerrarSesion.php" class="btn-xs btn-danger" role="button" style="margin-left: 55%;">Cerrar sesión</a>	
+                        <div  class="menuCerrarSesion">
+                            <a href="../controller/cerrarSesion.php" class="btn-xs btn-danger" role="button">Cerrar sesión</a>	
+                        </div>
+                        <div class="menuNombreUsuario">
+                        <?php
+                            echo $_SESSION['perfil'].": ".$_SESSION['nombreCompleto']; 
+                        ?>
+                        </div>
                     </div>
                 </div>
             </nav>

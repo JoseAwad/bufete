@@ -73,6 +73,9 @@ if ($perfil == Usuario::$PERFIL_CLIENTE) {
                 echo $usuario->nombreCompleto; ?>
             </td>
             <td>
+            <?php
+                if($_SESSION['perfil']!="CLIENTE") {
+            ?>
                 <select class="selectCambioEstado" atencionId="<?php echo $obj->id ?>">
                     <option value="AGENDADA" <?php if($obj->estado == 'AGENDADA') { echo "selected"; } ?> >AGENDADA</option>
                     <option value="CONFIRMADA" <?php if($obj->estado == 'CONFIRMADA') { echo "selected"; } ?>>CONFIRMADA</option>
@@ -80,10 +83,18 @@ if ($perfil == Usuario::$PERFIL_CLIENTE) {
                     <option value="PERDIDA" <?php if($obj->estado == 'PERDIDA') { echo "selected"; } ?>>PERDIDA</option>
                     <option value="REALIZADA" <?php if($obj->estado == 'REALIZADA') { echo "selected"; } ?>>REALIZADA</option>
                 </select>
+            <?php
+                } else {
+                    echo $obj->estado;
+                }
+            ?>    
             </td>
             <td>$ <?php echo $obj->valor ?></td>
             <td>
 
+            <?php
+                if($_SESSION['perfil']!="CLIENTE") {
+            ?>
             <form method="POST" action="../controller/atenciones.php?objeto=atenciones&accion=listar&operacion=eliminar"
                   onsubmit="return confirm('Esta seguro que desea eliminar la atención.');">
                 <input type="hidden" name="id" value="<?php echo $obj->id ?>" />
@@ -97,6 +108,7 @@ if ($perfil == Usuario::$PERFIL_CLIENTE) {
                 <button type="submit"><img src='img/eliminar.png' width='24' height='24' />Actualizar</button>
             </form>
 <?php            
+            }
         }
 ?>
             </td>

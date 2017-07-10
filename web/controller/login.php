@@ -14,6 +14,7 @@ if (!empty($rutNumero) && !empty($clave)) {
     if (Usuario::validarClave($rutNumero, $clave)) {        
         $u = Usuario::buscarPorRutNumero($rutNumero);
         $_SESSION['rutNumero'] = $rutNumero;
+        $_SESSION['nombreCompleto'] = $u->nombreCompleto;
         $_SESSION['perfil'] = $u->perfil;
         $_SESSION['model_usuario'] = json_encode($u);
         headerWrapper('/view/home.php');

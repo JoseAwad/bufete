@@ -12,7 +12,14 @@
                         <li><a href="secretaria_home.php?objeto=atenciones">Atenciones</a></li>
                     </ul>
                     <div class="right">
-                        <a href="../controller/cerrarSesion.php" class="btn-xs btn-danger" role="button" style="margin-left: 55%;">Cerrar sesión</a>	
+                        <div  class="menuCerrarSesion">
+                            <a href="../controller/cerrarSesion.php" class="btn-xs btn-danger" role="button">Cerrar sesión</a>	
+                        </div>
+                        <div class="menuNombreUsuario">
+                        <?php
+                           echo $_SESSION['perfil'].": ".$_SESSION['nombreCompleto'];  
+                        ?>
+                        </div>
                     </div>
                 </div>
             </nav>
