@@ -73,7 +73,7 @@
                 <select id="formAddAbogado_idEspecialidad" name="idEspecialidad" class="selectPicker">
                 <?php
                 $data = Especialidad::buscarTodos();
-                echo '<option value="-1" selected="true" disabled>'."Seleccione especialidad".'</option>';
+                echo '<option value="-1" selected disabled>'."Seleccione especialidad".'</option>';
                 foreach ($data as $value) {
                     echo '<option value="'.$value->id.'">'.$value->nombre.'</option>';
                 }?>

@@ -32,7 +32,7 @@ $lista = Abogado::buscarTodos($filtroRutNumero, $filtroNombreCompleto, $filtroEs
                             <option value='0' <?php if ($filtroEstado == 0){ echo 'selected'; } ?> >Todos</option>
                             <option value='1' <?php if ($filtroEstado == 1){ echo 'selected'; } ?>>Activos</option>
                             <option value='2' <?php if ($filtroEstado == 2){ echo 'selected'; } ?>>Despedidos</option>
-                        </seect>
+                        </select>
                     </th>
                     <th>
                         <button type="submit">Buscar</button>

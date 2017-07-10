@@ -15,8 +15,6 @@ values (44444444, 'Andres', NOW(), 'N', 'CLIENTE', '$2y$10$wE4.M2bzuOPj8X3nXTOKY
 
 delete from especialidades;
 
-insert into especialidades (nombre) values('Accidentes de Tráfico');
-insert into especialidades (nombre) values('Administrativo');
 insert into especialidades (nombre) values('Adopciones');
 insert into especialidades (nombre) values('Agrario');
 insert into especialidades (nombre) values('Blanqueo de capitales');
@@ -32,11 +30,8 @@ insert into especialidades (nombre) values('Delitos contra la intimidad');
 insert into especialidades (nombre) values('Delitos contra la seguridad vial');
 insert into especialidades (nombre) values('Delitos de amenazas');
 insert into especialidades (nombre) values('Delitos de calumnias e injurias');
-insert into especialidades (nombre) values('Delitos de daños');
-insert into especialidades (nombre) values('Delitos de descubrimiento y revelación de secretos');
 insert into especialidades (nombre) values('Delitos propiedad intelectual');
 insert into especialidades (nombre) values('Estafas');
-insert into especialidades (nombre) values('extranjería');
 insert into especialidades (nombre) values('Familia');
 insert into especialidades (nombre) values('Fiscal');
 insert into especialidades (nombre) values('Hereditario');
@@ -46,5 +41,4 @@ insert into especialidades (nombre) values('LOPD');
 insert into especialidades (nombre) values('Mercantil');
 insert into especialidades (nombre) values('Penal');
 insert into especialidades (nombre) values('Propiedad Intelectual');
-insert into especialidades (nombre) values('Reputación online');
 insert into especialidades (nombre) values('Urbanismo');
