@@ -1,8 +1,6 @@
 
  /*----------------------------------------login.php-style---------------------------------------*/
- body{
-	
-}
+
 
 #overlayLogin {
     position: absolute;
@@ -97,13 +95,15 @@
     text-transform: uppercase;
 }
  /*----------------------------------------comun-style---------------------------------------*/
-
+body{
+    background-color: #e5fcff;
+}
 .listadoDiv {
     height: 100%;
     margin-top: 6px;
     margin-left: -7%;
     width: 80%;
-    background: lightgray none repeat scroll 0 0;
+    background: white none repeat scroll 0 0;
     border-radius: 19px;
     border-bottom: 3px solid #b5caff;
     text-align: left;
@@ -129,7 +129,7 @@
     margin-top: 6px;
     margin-left: -7%;
     width: 50%;
-    background: lightgray none repeat scroll 0 0;
+    background: white none repeat scroll 0 0;
     border-radius: 19px;
     border-bottom: 3px solid #b5caff;
     text-align: left;
@@ -234,7 +234,7 @@
 	border-color: black;
 	opacity: 0.8;
 	top: 2px;
-    opacity: 0.8;
+    opacity: 0.7;
 }
 @media (min-width: 768px)
 .navbar {

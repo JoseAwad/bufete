@@ -48,7 +48,7 @@ if ($perfil == Usuario::$PERFIL_CLIENTE) {
             </tbody>
         </table>
         <br>
-        <table  class="display" width="100%" cellspacing="0">
+        <table class="display" width="100%" cellspacing="0">
             <thead>
                 <th>Id</th>
                 <th>Fecha hora atención</th>
@@ -98,14 +98,14 @@ if ($perfil == Usuario::$PERFIL_CLIENTE) {
             <form method="POST" action="../controller/atenciones.php?objeto=atenciones&accion=listar&operacion=eliminar"
                   onsubmit="return confirm('Esta seguro que desea eliminar la atención.');">
                 <input type="hidden" name="id" value="<?php echo $obj->id ?>" />
-                <button type="submit"><img src='img/eliminar.png' width='24' height='24' />Eliminar</button>
+                <button type="submit"><img src='img/eliminarAtencion.png' width='24' height='24' />Eliminar</button>
             </form>
 
             <form method="POST" action="../controller/atenciones.php?objeto=atenciones&accion=listar&operacion=cambiarEstado"
                   onsubmit="return confirm('Esta seguro que desea cambiar el estado?');">
                 <input type="hidden" name="id" value="<?php echo $obj->id ?>" />
                 <input type="hidden" name="estado" value="<?php echo $obj->estado ?>" id="atencion_estado_<?php echo $obj->id; ?>"/>
-                <button type="submit"><img src='img/eliminar.png' width='24' height='24' />Actualizar</button>
+                <button type="submit"><img src='img/actualizar.png' width='24' height='24' />Actualizar</button>
             </form>
 <?php            
             }
