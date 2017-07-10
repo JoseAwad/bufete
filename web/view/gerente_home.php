@@ -16,7 +16,7 @@ if ($usuario->perfil == Usuario::$PERFIL_GERENTE) {
     
     $objeto = getParam("objeto", postParam("objeto", ""));
     $accion = getParam("accion", postParam("accion", ""));
-
+    
     include('gerente_menu.php');
 
     //incluye la pagina de acuerdo al tipo de objeto y accion

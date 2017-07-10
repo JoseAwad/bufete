@@ -25,8 +25,9 @@ if ($usuario->perfil == Usuario::$PERFIL_ADMINISTRADOR) {
     }
     
     include('footer.php');
-
+    
 } else {
     //error perfil invalido para acceder a esta pagina
     headerWrapper('/view/home.php'); 
 }
+?>

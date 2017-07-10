@@ -4,7 +4,7 @@
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="gerente_home.php">Menú Gerente</a>
+                        <a class="navbar-brand" href="gerente_home.php?dashboard=true">Menú Gerente</a>
                     </div>
                     <ul class="nav navbar-nav">
                         <li><a href="gerente_home.php?objeto=clientes">Clientes</a></li>

@@ -4,7 +4,7 @@
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="administrador_home.php">Menú Cliente</a>
+                        <a class="navbar-brand" href="administrador_home.php?dashboard=true">Menú Cliente</a>
                     </div>
                     <ul class="nav navbar-nav">
                         <li><a href="cliente_home.php?objeto=atenciones&accion=listar">Atenciones</a></li>

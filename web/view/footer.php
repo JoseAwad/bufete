@@ -1,3 +1,6 @@
+<?php
+	include('carrusel.php');
+?>
 </body>
 <div class="container" style="margin-top:15%;">
 	<div id="footer">

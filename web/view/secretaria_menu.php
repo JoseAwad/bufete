@@ -4,7 +4,7 @@
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="secretaria_home.php">Menú Secretaria</a>
+                        <a class="navbar-brand" href="secretaria_home.php?dashboard=true">Menú Secretaria</a>
                     </div>
                     <ul class="nav navbar-nav">
                         <li><a href="secretaria_home.php?objeto=clientes">Clientes</a></li>

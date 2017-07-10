@@ -16,7 +16,7 @@ if ($usuario->perfil == Usuario::$PERFIL_SECRETARIA) {
     
     $objeto = getParam("objeto", postParam("objeto", ""));
     $accion = getParam("accion", postParam("accion", ""));
-
+    
     include('secretaria_menu.php');
 
     //incluye la pagina de acuerdo al tipo de objeto y accion
